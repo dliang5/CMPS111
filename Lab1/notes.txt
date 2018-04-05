@@ -1,0 +1,10 @@
+1. How do I get a reference to the current thread? 
+	1. Look into thread.c and .h for more information if needed
+	2. basically - *initial_thread is the main thread first then *idle_thread is the "idle" one 
+	3. There is a thread class if needed to create more threads as I go along
+	4. there is a thread that is the current one called *thread_current -> i guess you would just say &thread_current
+2. How do I put a thread to sleep? 
+3. How do I wake a thread up agin? 
+4. When do I check if anything needs waking up? ie what function gets called when the timer interrupt fires? 
+5. How do I turn interrupts on and off? 
+6. What is the C type of a thread? 
