@@ -4,7 +4,11 @@
 	3. There is a thread class if needed to create more threads as I go along
 	4. there is a thread that is the current one called *thread_current -> i guess you would just say &thread_current
 2. How do I put a thread to sleep? 
+        1. with timer_sleep is how I put them to sleep, but how in the world do I do the other stuff? 
 3. How do I wake a thread up agin? 
+        1. it should be in interrupt that I wake the thread up again
 4. When do I check if anything needs waking up? ie what function gets called when the timer interrupt fires? 
+        1. there should be a list I should check about it
 5. How do I turn interrupts on and off? 
+        1. interrupts are turned by interrupt on and off functions 
 6. What is the C type of a thread? 

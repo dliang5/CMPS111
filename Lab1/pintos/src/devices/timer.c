@@ -7,7 +7,6 @@
 #include "threads/interrupt.h"
 #include "threads/synch.h"
 #include "threads/thread.h"
-  
 /* See [8254] for hardware details of the 8254 timer chip. */
 
 #if TIMER_FREQ < 19
@@ -84,7 +83,7 @@ timer_ticks (void)
 /* 
  * Returns the number of timer ticks elapsed since THEN, which
  * should be a value once returned by timer_ticks(). 
- */1
+ */
 int64_t
 timer_elapsed (int64_t then) 
 {
