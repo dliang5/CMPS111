@@ -93,16 +93,16 @@ timer_elapsed (int64_t then)
 /* 
  * Sleeps for approximately TICKS timer ticks.  
  * Interrupts must be turned on. 
- * TODO: put the current thread to sleep and return immediately instead of busy-waiting
  */
 void
 timer_sleep (int64_t ticks) 
 {
   int64_t start = timer_ticks ();
-
-  ASSERT (intr_get_level () == INTR_ON);
-  while (timer_elapsed (start) < ticks) 
-    thread_yield (); // make the change here, so I want to interrupt this when it "sleeps" 
+  thread_current()->thread_ticks = ticks + start;
+  intr_disable();
+  thread_block();
+  intr_enable();
+  return;
 }
 
 /* 
@@ -256,13 +256,17 @@ real_time_sleep (int64_t num, int32_t denom)
       /* We're waiting for at least one full timer tick.  Use
          timer_sleep() because it will yield the CPU to other
          processes. */                
-      timer_sleep (ticks); 
+      timer_sleep (ticks); // might need to change this later
+      printf("helloooooooo");
     }
   else 
     {
       /* Otherwise, use a busy-wait loop for more accurate
          sub-tick timing. */
-      real_time_delay (num, denom); 
+      real_time_delay (num, denom);
+      printf("hello");
+//      thread_unblock();
+//      thread_yield();
     }
 }
 

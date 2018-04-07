@@ -1,4 +1,4 @@
-qemu-system-x86_64 -hda /tmp/E2k5ld0bPg.dsk -m 4 -net none -nographic -monitor null
+qemu-system-x86_64 -hda /tmp/sXn14dZC8O.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q run alarm-single
@@ -14,15 +14,5 @@ Executing 'alarm-single':
 (alarm-single) thread 1 sleeps 20 ticks each time, and so on.
 (alarm-single) If successful, product of iteration count and
 (alarm-single) sleep duration will appear in nondescending order.
-(alarm-single) thread 0: duration=10, iteration=1, product=10
-(alarm-single) thread 1: duration=20, iteration=1, product=20
-(alarm-single) thread 2: duration=30, iteration=1, product=30
-(alarm-single) thread 3: duration=40, iteration=1, product=40
-(alarm-single) thread 4: duration=50, iteration=1, product=50
-(alarm-single) end
-Execution of 'alarm-single' complete.
-Timer: 293 ticks
-Thread: 0 idle ticks, 293 kernel ticks, 0 user ticks
-Console: 986 characters output
-Keyboard: 0 keys pressed
-Powering off...
+
+TIMEOUT after 6 seconds of wall-clock time - load average: 0.02, 0.07, 0.08
