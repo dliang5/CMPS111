@@ -12,10 +12,11 @@
         <group>
             <file>file:/home/dcom/Desktop/CMPS111/Lab1/pintos/src/devices/timer.h</file>
             <file>file:/home/dcom/Desktop/CMPS111/Lab1/pintos/src/threads/interrupt.c</file>
-            <file>file:/home/dcom/Desktop/CMPS111/Lab1/pintos/src/devices/shutdown.h</file>
+            <file>file:/home/dcom/Desktop/CMPS111/Lab1/pintos/src/lib/kernel/list.c</file>
+            <file>file:/home/dcom/Desktop/CMPS111/Lab1/pintos/src/lib/kernel/list.h</file>
             <file>file:/home/dcom/Desktop/CMPS111/Lab1/pintos/src/devices/timer.c</file>
             <file>file:/home/dcom/Desktop/CMPS111/Lab1/pintos/src/threads/thread.h</file>
-            <file>file:/home/dcom/Desktop/CMPS111/Lab1/pintos/src/devices/rtc.c</file>
+            <file>file:/home/dcom/Desktop/CMPS111/Lab1/pintos/src/threads/interrupt.h</file>
             <file>file:/home/dcom/Desktop/CMPS111/Lab1/notes.txt</file>
             <file>file:/home/dcom/Desktop/CMPS111/Lab1/pintos/src/threads/thread.c</file>
         </group>

@@ -102,7 +102,7 @@ struct thread
     unsigned magic;                     /* Detects stack overflow. */
     
     // this is for timer.c 
-    uint64_t thread_ticks;
+    int64_t wakeup_time;
   };
 
 /* If false (default), use round-robin scheduler.

@@ -1,4 +1,4 @@
-qemu-system-x86_64 -hda /tmp/sHcw6OuZti.dsk -m 4 -net none -nographic -monitor null
+qemu-system-x86_64 -hda /tmp/POWH9zPel2.dsk -m 4 -net none -nographic -monitor null
 PiLo hda1
 Loading.........
 Kernel command line: -q run alarm-multiple
@@ -15,4 +15,4 @@ Executing 'alarm-multiple':
 (alarm-multiple) If successful, product of iteration count and
 (alarm-multiple) sleep duration will appear in nondescending order.
 
-TIMEOUT after 6 seconds of wall-clock time - load average: 0.02, 0.07, 0.08
+TIMEOUT after 6 seconds of wall-clock time - load average: 0.01, 0.02, 0.00

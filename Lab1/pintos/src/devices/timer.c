@@ -28,6 +28,13 @@ static intr_handler_func timer_interrupt;
 static void real_time_delay (int64_t num, int32_t denom);
 static void real_time_sleep (int64_t num, int32_t denom);
 
+// initalizing list here
+// now that list is initalized fine, try to store the current thread about to 
+// sleep in sleeping_threads. 
+// once that works, we would have to check if the ticks have run out 
+// if it did, unblock the thread and yield it back otherwise do nothing
+static struct list sleeping_threads = LIST_INITIALIZER(sleeping_threads);
+
 /* 
  * Sets up the timer to interrupt TIMER_FREQ times per second,
  * and registers the corresponding interrupt. 
@@ -98,11 +105,18 @@ void
 timer_sleep (int64_t ticks) 
 {
   int64_t start = timer_ticks ();
-  thread_current()->thread_ticks = ticks + start;
+  // keeping track of when to wake up the thread
+  // time since OS booted up and the amount of time sleep should tick for
+  thread_current()->wakeup_time = ticks + start;
+  // TODO: put the current thread into sleeping_threads LIST first  x
+  // then consider the time_interrupt_handler function call
+  // end night here i guess
+  struct list_elem current_elem; //what's the difference?
   intr_disable();
+  current_elem.c_thread = thread_current(); 
+  list_push_back(&sleeping_threads, &current_elem); // add the list_elem to threads
   thread_block();
   intr_enable();
-  return;
 }
 
 /* 
@@ -191,12 +205,22 @@ timer_print_stats (void)
 
 /* 
  * Timer interrupt handler. 
+ * 
  */
 static void
 timer_interrupt (struct intr_frame *args UNUSED)
 {
   ticks++;
   thread_tick ();
+  struct list_elem *begin; 
+  begin = list_begin(&sleeping_threads);
+  
+  for(begin;begin != list_end(&sleeping_threads); begin = list_next(begin)){
+      if (ticks >= (begin->c_thread)->wakeup_time){
+          thread_unblock(begin->c_thread);
+          list_remove(begin);
+      }
+  }
 }
 
 /* 
@@ -264,9 +288,6 @@ real_time_sleep (int64_t num, int32_t denom)
       /* Otherwise, use a busy-wait loop for more accurate
          sub-tick timing. */
       real_time_delay (num, denom);
-      printf("hello");
-//      thread_unblock();
-//      thread_yield();
     }
 }
 
