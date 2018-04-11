@@ -111,10 +111,8 @@ timer_sleep (int64_t ticks)
   // TODO: put the current thread into sleeping_threads LIST first  x
   // then consider the time_interrupt_handler function call
   // end night here i guess
-  struct list_elem current_elem; //what's the difference?
   intr_disable();
-  current_elem.c_thread = thread_current(); 
-  list_push_back(&sleeping_threads, &current_elem); // add the list_elem to threads
+  list_push_back(&sleeping_threads, &thread_current()->elem); // add the list_elem to threads
   thread_block();
   intr_enable();
 }
@@ -215,12 +213,6 @@ timer_interrupt (struct intr_frame *args UNUSED)
   struct list_elem *begin; 
   begin = list_begin(&sleeping_threads);
   
-  for(begin;begin != list_end(&sleeping_threads); begin = list_next(begin)){
-      if (ticks >= (begin->c_thread)->wakeup_time){
-          thread_unblock(begin->c_thread);
-          list_remove(begin);
-      }
-  }
 }
 
 /* 
